@@ -6,11 +6,13 @@ function find() {
         .orderBy("id")
 }
 
-function findBy(filter) {
-    return db("users")
+const findBy = async (filter) => {
+    const users = await db("users")
         .select("id", "username", "password")
         .orderBy("id")
         .where(filter)
+
+    return users
 }
 
 const findById = async (user_id) => {
