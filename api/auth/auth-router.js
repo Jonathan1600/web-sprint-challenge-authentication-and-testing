@@ -5,7 +5,7 @@ const Auth = require('./auth-model');
 const jwt = require('jsonwebtoken');
 const { checkUsernameExists, checkUsernameTaken, checkBody } = require('../middleware/middleware');
 
-router.post('/register', checkUsernameTaken, checkBody, (req, res, next) => {
+router.post('/register', checkBody, checkUsernameTaken, (req, res, next) => {
   /*
     IMPLEMENT
     You are welcome to build additional middlewares to help with the endpoint's functionality.
@@ -44,7 +44,7 @@ router.post('/register', checkUsernameTaken, checkBody, (req, res, next) => {
     }).catch(next)
 });
 
-router.post('/login', checkUsernameExists, (req, res) => {
+router.post('/login', checkBody, checkUsernameExists, (req, res) => {
 
   /*
     IMPLEMENT
