@@ -7,7 +7,7 @@ function find() {
 }
 
 function findBy(filter) {
-    return db("users as u")
+    return db("users")
         .select("id", "username", "password")
         .orderBy("id")
         .where(filter)
