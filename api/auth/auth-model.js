@@ -15,7 +15,7 @@ function findBy(filter) {
 
 const findById = async (user_id) => {
     const user = await db("users")
-        .select("id", "username")
+        .select("id", "username", "password")
         .where("id", user_id).first()
 
     return user

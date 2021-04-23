@@ -3,6 +3,7 @@ const bcrypt = require('bcryptjs');
 const { JWT_SECRET } = require("../secrets");
 const Auth = require('./auth-model');
 const jwt = require('jsonwebtoken');
+const { checkUsernameExists } = require('../middleware/middleware');
 
 router.post('/register', (req, res, next) => {
   /*
@@ -43,7 +44,7 @@ router.post('/register', (req, res, next) => {
     }).catch(next)
 });
 
-router.post('/login', (req, res) => {
+router.post('/login', checkUsernameExists, (req, res) => {
 
   /*
     IMPLEMENT
